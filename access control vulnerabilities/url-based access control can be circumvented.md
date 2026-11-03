@@ -31,6 +31,7 @@ Cookie: session=<session-cookie>
 X-Original-URL: /admin
 
 ```
+-> /admin page is returned.
 
 ### To Delete User carlos
 ```
@@ -40,6 +41,7 @@ Cookie: session=<session-cookie>
 X-Original-URL: /admin/delete
 
 ```
+-> User carlos gets deleted with the 302 Redirect response
 
 ---
 
@@ -56,7 +58,7 @@ X-Original-URL: /admin/delete
 
 ## What Defender Should Have
 1. Enforce a check for authentication and authorization for sensitive pathways and operations in the backend and front-end both.
-2. Use a reverse proxy to strip out headers like X-Original-URL and X-Rewrite-URL or configure you backend to ignore headers like this.
+2. Use a reverse proxy to strip out headers like X-Original-URL and X-Rewrite-URL or configure your backend to ignore headers like this.
 3. If it isn't necessary, you can remove those header configurations from the server side completely.
 4. Ensure that both the front-end reverse proxy and the back-end application interpret the request URL in exactly the same way.
 

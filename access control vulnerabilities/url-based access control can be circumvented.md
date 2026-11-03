@@ -23,7 +23,7 @@ After constantly failing, I tried separating the arguments and the URL and kept 
 
 ---
 
-## The Pipeline
+## The entire Pipeline and Solution
 1. You alter the request to the `/` page by putting an extra `X-Original-URL:/admin header`.
 2.  Front-end server receives the request and because Front-end don't process any header it just sees the `/` path which is publicly accessible and let the request pass through.
 3. Now, the backend receives the request, and because it is configured to support the X-Original-URL header, it uses that header to override the original `/` path URL to the `/admin` URL.

@@ -61,7 +61,7 @@ Host: 0a8700c003f221558069b21f00ba0041.web-security-academy.net
 Cookie: session=<redacted>
 
 {
-"email":"ab@gmail.com"
+"email":"ab@gmail.com",
 "roleid": 2
 }
 
@@ -91,7 +91,7 @@ This suggests that the server fails to restrict or validate whether the user sub
 
 ## Entire Pipeline and Solution
 1. I send a `my-account/change-email` request by introducing an extra parameter `"roleid": 2` in the request.
-2. The server receives the request, and because the server doesn't implement an authorisation check on the `roleid` parameter, it blindly trusts the request and binds the provided parameters to the database.
+2. The server receives the request, and because the server doesn't implement an authorisation check on the `roleid` parameter, it blindly trusts the request and binds the provided parameters to the database called mass assignment (also called autobinding).
 3. Then the response I get to see that the `roleid` parameter is changed to 2.
 4. Then, if I now go to the `/admin` page, I can access it because, by the logic, I am now an authorised member and can delete the user Carlos.
 5. I deleted the user Carlos and completed the lab.
@@ -99,7 +99,7 @@ This suggests that the server fails to restrict or validate whether the user sub
 ---
 
 ## What Defender Should have (Mitigations)
-1. Ensure new accounts or standard users are strictly set to the lowest privileges.
+1. Ensure new accounts or standard users are strictly set to the lowest privileges. There should be an allowlist of fields from the client side.
 2. The role modification should be handled separately by the dedicated endpoint and can only be modified by authorised administrators.
 3. Always check permissions for every sensitive field modification in the backend, and sensitive endpoints should be completely immutable for low-privileged users.
 

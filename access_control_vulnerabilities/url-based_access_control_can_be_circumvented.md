@@ -49,7 +49,7 @@ X-Original-URL: /admin/delete
 1. You alter the request to the `/` page by putting an extra `X-Original-URL:/admin` header.
 2.  The front-end server receives the request with a `/` request-line path, which is publicly accessible, and lets the request pass through. This suggests that the front-end block looks only at the request-line path.
 3. Now, the backend receives the request, and because it is configured to support the X-Original-URL header, it uses that header to override the original `/` path URL to the `/admin` URL.
-4. You will find the full URL in the admin's HTML page: `/admin/delete?username=carlos`.So, you get to know that there is a `/delete` path inside `/admin`. Now, you put `/?username=carlos` as a request line and put the `X-Original-URL:/admin/delete` header in another request.
+4. You will find the full URL in the admin's HTML page: `/admin/delete?username=carlos`. So, you get to know that there is a `/delete` path inside `/admin`. Now, you put `/?username=carlos` as a request line and put the `X-Original-URL:/admin/delete` header in another request.
 5. The frontend again sees the `/` path and forwards it to the backend, and the backend receives the supplied arguments and path, because the backend is configured to override the `/` path to `/admin/delete` using the header.
 6. It constructs `/admin/delete?username=carlos` as the full path; because the server doesn't have any access control for its own, it trusts that anything that the front end passes is authorized, then it executes the path.
 7. It deletes user Carlos.

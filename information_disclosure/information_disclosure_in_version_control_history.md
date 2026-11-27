@@ -109,7 +109,7 @@ Carlos first ran the `git add admin.conf admin_panel.php` command to create two 
 ### Step 2: Git Builds the Tree Object
 When Carlos runs `git commit -m "Add skeleton admin panel"`. Git first need to record the folder structure. It reads the staged files and combines them together into a single raw byte stream (in this case, 81 bytes).
 
-• For the first file: `100644 admin.conf\x00`(18 bytes) + `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9`(20 bytes).
+• For the first file: `100644 admin.conf\x00`(18 bytes) + `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a`(20 bytes).
 • For the second file: `100644  admin_panel.php\x00`(23 bytes) + `\x89D\xe3\xb9\x856\x91C\x1d\xc5\x8d_Ix\xd3\x94\x0c\xeaJ\xf2`(20 bytes).
 • And combines both files with Total raw data: 38 + 43 = 81 bytes.
 

@@ -104,7 +104,7 @@ Carlos first ran the `git add admin.conf admin_panel.php` command to create two 
 • Creates the 20-byte Binary Hash for both blobs which kind of looks like : `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a` & `\x89D\xe3\xb9\x856\x91C\x1d\xc5\x8d_Ix\xd3\x94\x0c\xeaJ\xf2`.
 
 3. #### Zlib & Save:
-• Git compresses both hashes into a separate zlib file for each, named after the 40-character hex string of that 20-byte hash, which you will get after decoding these 20-byte binary hashes. Like the decoded hash for the first 20-byte Binary hash for `admin.conf` content is: `c7c062aabd6e0436d786919da437053684348e` and saves it as `/.git/objects/c7/c062aabd6e0436d786919da437053684348e` and similarly for 2nd 20-byte hash, the decoded hash is : `8944e3b9853691431dc58d5f4978d3940cea4af2` and saves it as `/.git/objects/89/44e3b9853691431dc58d5f4978d3940cea4af2`.
+• Git compresses both hashes into a separate zlib file for each, named after the 40-character hex string of that 20-byte hash, which you will get after decoding these 20-byte binary hashes. Like the decoded hash for the first 20-byte Binary hash for `admin.conf` content is: `c7c062aabd6e0436d786919da437053684348e9a` and saves it as `/.git/objects/c7/c062aabd6e0436d786919da437053684348e9a` and similarly for 2nd 20-byte hash, the decoded hash is : `8944e3b9853691431dc58d5f4978d3940cea4af2` and saves it as `/.git/objects/89/44e3b9853691431dc58d5f4978d3940cea4af2`.
 
 ### Step 2: Git Builds the Tree Object
 When Carlos runs `git commit -m "Add skeleton admin panel"`. Git first need to record the folder structure. It reads the staged files and combines them together into a single raw byte stream (in this case, 81 bytes).

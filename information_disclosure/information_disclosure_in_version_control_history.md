@@ -1,7 +1,5 @@
 # Information disclosure in version control history
 
----
-
 ## Lab Description
 This lab contains a vulnerability of Sensitive Information Disclosure via version control history and we need to take leverage of this vulnerability and search for the password of the administrator account and delete the user carlos.
 

@@ -67,7 +67,7 @@ with open(r"path/to/that/downloaded/file", "rb") as f:
 <img width="1366" height="736" alt="Screenshot 2026-11-27 113305" src="https://github.com/user-attachments/assets/e6e7bfaa-c1a5-4d86-b0b1-d984d91a39f7" />
 
 8. Here you can see that `admin.conf` and `admin_panel.php` are there, and a 20-byte Binary hash after their name. Copy the 20-byte hash after `admin.conf\x00` and before the number `100644` (its mode name is not part of the hash) and your copied hash should be like: `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a`.
-9. Now, to convert it into a 40-byte SHA-1 hash, simply use this Python script and type the hash within `b'<hash>'`:
+9. Now, to convert it into a 40-Character SHA-1 hash, simply use this Python script and type the hash within `b'<hash>'`:
 
 ```python
 raw_hash = b'\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a'
@@ -104,7 +104,7 @@ Carlos first ran the `git add admin.conf admin_panel.php` command to create two 
 • Creates the 20-byte Binary Hash for both blobs which kind of looks like : `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a` & `\x89D\xe3\xb9\x856\x91C\x1d\xc5\x8d_Ix\xd3\x94\x0c\xeaJ\xf2`.
 
 3. #### Zlib & Save:
-• Git compresses both hashes into a separate zlib file for each, named after the 40-byte hex string of that 20-byte hash, which you will get after decoding these 20-byte binary hashes. Like the decoded hash for the first 20-byte Binary hash for `admin.conf` content is: `c7c062aabd6e0436d786919da437053684348e` and saves it as `/.git/objects/c7/c062aabd6e0436d786919da437053684348e` and similarly for 2nd 20-byte hash, the decoded hash is : `8944e3b9853691431dc58d5f4978d3940cea4af2` and saves it as `/.git/objects/89/44e3b9853691431dc58d5f4978d3940cea4af2`.
+• Git compresses both hashes into a separate zlib file for each, named after the 40-character hex string of that 20-byte hash, which you will get after decoding these 20-byte binary hashes. Like the decoded hash for the first 20-byte Binary hash for `admin.conf` content is: `c7c062aabd6e0436d786919da437053684348e` and saves it as `/.git/objects/c7/c062aabd6e0436d786919da437053684348e` and similarly for 2nd 20-byte hash, the decoded hash is : `8944e3b9853691431dc58d5f4978d3940cea4af2` and saves it as `/.git/objects/89/44e3b9853691431dc58d5f4978d3940cea4af2`.
 
 ### Step 2: Git Builds the Tree Object
 When Carlos runs `git commit -m "Add skeleton admin panel"`. Git first need to record the folder structure. It reads the staged files and combines them together into a single raw byte stream (in this case, 81 bytes).
@@ -118,10 +118,10 @@ Now Git packages this Tree Object:
 #### Prepends Header:
 Attaches an 8-byte header to this raw data: `b'tree 81\x00100644 admin.conf\x00\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a100644 admin_panel.php\x00\x89D\xe3\xb9\x856\x91C\x1d\xc5\x8d_Ix\xd3\x94\x0c\xeaJ\xf2'`.
 #### Runs SHA-1:
-Git hashes those 89 bytes and converts them into a 40-byte hex characters of SHA-1 Hash. Which was, in this case: `d09bccb37c10e7ab4d3b5405d4756a2f97fbf6c3`.
+Git hashes those 89 bytes and converts them into a 40-Character hex characters of SHA-1 Hash. Which was, in this case: `d09bccb37c10e7ab4d3b5405d4756a2f97fbf6c3`.
 
 #### Zlib & Save:
-Git now compress those 89 bytes into a zlib file and saves it into the folder named by the first 2 hex characters of the generated 40-byte SHA-1 hash's hex characters; then the file name is the remaining 38 characters of that SHA-1 hash's hex. The path is similar to: `/.git/objects/d0/9bccb37c10e7ab4d3b5405d4756a2f97fbf6c3`.
+Git now compress those 89 bytes into a zlib file and saves it into the folder named by the first 2 hex characters of the generated 40-Character SHA-1 hash's hex characters; then the file name is the remaining 38 characters of that SHA-1 hash's hex. The path is similar to: `/.git/objects/d0/9bccb37c10e7ab4d3b5405d4756a2f97fbf6c3`.
 
 ### Step 3: Git Builds the Commit Object & Updates Logs
 

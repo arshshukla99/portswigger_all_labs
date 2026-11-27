@@ -67,9 +67,15 @@ with open(r"path/to/that/downloaded/file", "rb") as f:
 <img width="1366" height="736" alt="Screenshot 2026-11-27 113305" src="https://github.com/user-attachments/assets/e6e7bfaa-c1a5-4d86-b0b1-d984d91a39f7" />
 
 8. Here you can see that `admin.conf` and `admin_panel.php` are there, and a 20-byte Binary hash after their name. Copy the 20-byte hash after `admin.conf\x00` and before the number `100644` (its mode name is not part of the hash) and your copied hash should be like: `\xc7\xc0b\xaa\xbdn\x046\xd7\x86\x91\x9d\xa47\x056\x844\x8e\x9a`.
-9. Now, to convert it into a 40-byte SHA-1 hash, simply use any AI chatbot or simply ask Google to decode it like this:
+9. Now, to convert it into a 40-byte SHA-1 hash, simply use this Python script and type the hash within `b'<hash>'`:
 
-<img width="1366" height="736" alt="Screenshot 2026-11-27 113410" src="https://github.com/user-attachments/assets/4cc585f7-6d67-4472-b1a5-aeec91506131" />
+```
+raw_hash = b'\x89D\xe3\xb9\x856\x91C\x1d\xc5\x8d_Ix\xd3\x94\x0c\xeaJ\xf2'
+hex_hash = raw_hash.hex()
+print(hex_hash)
+# Output: 8944e3b9853691431dc58d5f4978d3940cea4af2
+
+```
 
 10. Now, after decoding, it should look something like this: `c7c062aabd6e0436d786919da437053684348e9a`
 11. Now paste that hash into your Python script again and run the script again. You will get the output with the admin password `b'blob 36\x00ADMIN_PASSWORD=rdhwq09xy7frlloi5eh7\n'`; copy the password `rdhwq09xy7frlloi5eh7` ( It can be different in your case).
